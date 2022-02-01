@@ -1,6 +1,6 @@
 import { actionTypes } from '../../types/ActionTypes';
 
-interface StateProps {
+interface FilterState {
   searchQuery: string;
 }
 
@@ -15,7 +15,7 @@ const initialState = {
 };
 
 export default function filter(
-  state: StateProps = initialState,
+  state: FilterState = initialState,
   action: ActionProps
 ) {
   switch (action.type) {

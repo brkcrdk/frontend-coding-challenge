@@ -1,10 +1,5 @@
-import { TournamentProps } from '../../types/Tournaments';
+import { TournamentProps, TournamentState } from '../../types/Tournaments';
 import { actionTypes } from '../../types/ActionTypes';
-interface StateProps {
-  tournaments: TournamentProps[];
-  isLoading: boolean;
-  hasError: boolean;
-}
 
 interface ActionProps {
   type: string;
@@ -21,7 +16,7 @@ const initialState = {
 };
 
 export default function tournaments(
-  state: StateProps = initialState,
+  state: TournamentState = initialState,
   action: ActionProps
 ) {
   switch (action.type) {
