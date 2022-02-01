@@ -1,5 +1,5 @@
 import { TournamentProps } from '../../types/Tournaments';
-
+import { actionTypes } from '../../types/ActionTypes';
 interface StateProps {
   tournaments: TournamentProps[];
   isLoading: boolean;
@@ -9,6 +9,7 @@ interface StateProps {
 interface ActionProps {
   type: string;
   payload: {
+    tournaments?: TournamentProps[];
     isLoading?: boolean;
     hasError?: boolean;
   };
@@ -24,9 +25,11 @@ export default function tournaments(
   action: ActionProps
 ) {
   switch (action.type) {
-    case 'FETCHING_TOURNAMENTS':
+    case actionTypes.SET_TOURNAMENTS:
+      return { ...state, tournaments: action.payload.tournaments };
+    case actionTypes.FETCHING_LOADING:
       return { ...state, isLoading: action.payload.isLoading };
-    case 'FETCHING_ERROR':
+    case actionTypes.FETCHING_ERROR:
       return { ...state, hasError: action.payload.hasError };
     default:
       return state;
