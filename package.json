@@ -28,6 +28,7 @@
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.0.1",
     "typescript": "~3.7.2",
+    "usehooks-ts": "^2.3.0",
     "wait-for-localhost-cli": "^1.1.0"
   },
   "scripts": {
