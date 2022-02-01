@@ -16,3 +16,9 @@ export interface TournamentProps {
   };
   startDate: string;
 }
+
+export interface TournamentState {
+  tournaments: TournamentProps[];
+  isLoading: boolean;
+  hasError: boolean;
+}
