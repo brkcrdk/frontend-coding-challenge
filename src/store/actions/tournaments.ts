@@ -28,6 +28,7 @@ export function getTournaments(q: string = '') {
   const computedQuery = q && `?q=${q}`;
   return async function(dispatch: Dispatch) {
     try {
+      dispatch(loadingState(true));
       const request = await fetch(`${API_TOURNAMENTS_URL}${computedQuery}`);
       const response = await request.json();
       dispatch(setTournaments(response));
