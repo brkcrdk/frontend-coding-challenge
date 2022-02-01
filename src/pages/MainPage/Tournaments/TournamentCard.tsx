@@ -2,13 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 import theme from '../../../theme';
 import { H6, Button } from '../../../components';
-const TournamentCard = () => {
+import { TournamentProps } from '../../../types/Tournaments';
+interface TournamentCardProps {
+  tournamentInfo: TournamentProps;
+}
+
+const TournamentCard: React.FC<TournamentCardProps> = ({ tournamentInfo }) => {
+  const { name, organizer, game, participants } = tournamentInfo;
+
   return (
     <TournamentCardContainer>
-      <H6>Test</H6>
-      <span>Organizer: Test</span>
-      <span>Game: Rocket League</span>
-      <span>Participants: 134/256</span>
+      <H6>{name}</H6>
+      <span>Organizer: {organizer}</span>
+      <span>Game: {game}</span>
+      <span>
+        Participants: {participants.current}/{participants.max}
+      </span>
       <span>Start: 27/02/2020, 12:50:33</span>
       <TournamentControllers>
         <Button>Edit</Button>

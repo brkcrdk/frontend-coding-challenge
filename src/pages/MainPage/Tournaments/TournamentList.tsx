@@ -15,7 +15,7 @@ const TournamentList = () => {
   const renderTournaments = (
     <CardList>
       {tournaments.map(tournament => (
-        <TournamentCard />
+        <TournamentCard tournamentInfo={tournament} key={tournament.id} />
       ))}
     </CardList>
   );
@@ -39,6 +39,6 @@ const ListContainer = styled.div`
 
 const CardList = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: ${theme.spacing(6)};
 `;
