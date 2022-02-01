@@ -25,7 +25,7 @@ const TournamentList = () => {
       {tournaments?.length ? (
         renderTournaments
       ) : (
-        <span>No tournaments found.</span>
+        <span className="noTournament">No tournaments found.</span>
       )}
     </ListContainer>
   );
@@ -35,6 +35,10 @@ export default TournamentList;
 
 const ListContainer = styled.div`
   width: 100%;
+  display: grid;
+  .noTournament {
+    text-align: center;
+  }
 `;
 
 const CardList = styled.div`
