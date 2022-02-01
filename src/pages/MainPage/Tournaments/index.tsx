@@ -3,19 +3,22 @@ import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { TournamentState } from '../../../types/Tournaments';
 import theme from '../../../theme';
-
+import TournamentList from './TournamentList';
+import Retry from './Retry';
 interface StateProps {
   tournamentsStore: TournamentState;
 }
 
 const Tournaments = () => {
-  const { tournaments, hasError, isLoading } = useSelector(
+  const { hasError, isLoading } = useSelector(
     (s: StateProps) => s.tournamentsStore
   );
 
+  const renderTournaments = hasError ? <Retry /> : <TournamentList />;
+
   return (
     <TournamentsContainer>
-      {isLoading ? 'Loading tournaments..' : 'loaded'}
+      {isLoading ? <span>Loading tournaments..</span> : renderTournaments}
     </TournamentsContainer>
   );
 };
@@ -23,7 +26,7 @@ const Tournaments = () => {
 export default Tournaments;
 
 const TournamentsContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  justify-content: center;
   margin-top: ${theme.spacing(6)};
 `;
