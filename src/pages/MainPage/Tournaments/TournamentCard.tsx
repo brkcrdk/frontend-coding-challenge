@@ -3,12 +3,14 @@ import styled from 'styled-components';
 import theme from '../../../theme';
 import { H6, Button } from '../../../components';
 import { TournamentProps } from '../../../types/Tournaments';
+import { dateFormatter } from '../../../utils';
+
 interface TournamentCardProps {
   tournamentInfo: TournamentProps;
 }
 
 const TournamentCard: React.FC<TournamentCardProps> = ({ tournamentInfo }) => {
-  const { name, organizer, game, participants } = tournamentInfo;
+  const { name, organizer, game, participants, startDate } = tournamentInfo;
 
   return (
     <TournamentCardContainer>
@@ -18,7 +20,7 @@ const TournamentCard: React.FC<TournamentCardProps> = ({ tournamentInfo }) => {
       <span>
         Participants: {participants.current}/{participants.max}
       </span>
-      <span>Start: 27/02/2020, 12:50:33</span>
+      <span>Start: {dateFormatter(startDate)}</span>
       <TournamentControllers>
         <Button>Edit</Button>
         <Button>Delete</Button>
