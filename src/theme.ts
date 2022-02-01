@@ -13,7 +13,7 @@ const theme = {
     attention: {
       main: '#D64242',
       light: '#F04A4A',
-      dark: 'BD3A3A'
+      dark: '#BD3A3A'
     },
     background: {
       body: '#161616',
