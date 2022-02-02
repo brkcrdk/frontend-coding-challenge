@@ -5,14 +5,9 @@ import MainPage from './pages/MainPage';
 import { getTournaments } from './store/actions/tournaments';
 import { RootState } from './store/reducers';
 
-type Props = {};
-
 const App: React.FC = () => {
-  const tournamentsStore = useSelector((s: RootState) => s.tournamentsStore);
   const { searchQuery } = useSelector((s: RootState) => s.filterStore);
   const dispatch = useDispatch();
-
-  console.log({ searchQuery, tournamentsStore });
 
   useEffect(() => {
     dispatch(getTournaments(searchQuery));
