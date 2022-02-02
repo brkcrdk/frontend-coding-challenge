@@ -39,3 +39,14 @@ export function getTournaments(q: string = '') {
     }
   };
 }
+
+export function addNewTournament(tournament: TournamentProps) {
+  return function(dispatch: Dispatch) {
+    dispatch({
+      type: actionTypes.ADD_NEW_TOURNAMENT,
+      payload: {
+        tournament
+      }
+    });
+  };
+}
