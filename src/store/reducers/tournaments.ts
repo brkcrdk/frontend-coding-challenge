@@ -7,6 +7,7 @@ interface ActionProps {
     tournaments?: TournamentProps[];
     isLoading?: boolean;
     hasError?: boolean;
+    tournament?: TournamentProps;
   };
 }
 const initialState = {
@@ -26,6 +27,11 @@ export default function tournaments(
       return { ...state, isLoading: action.payload.isLoading };
     case actionTypes.FETCHING_ERROR:
       return { ...state, hasError: action.payload.hasError };
+    case actionTypes.ADD_NEW_TOURNAMENT:
+      const updatedTournaments = [action.payload.tournament].concat(
+        state.tournaments
+      );
+      return { ...state, tournaments: updatedTournaments };
     default:
       return state;
   }
