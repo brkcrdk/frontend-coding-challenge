@@ -1,8 +1,10 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import theme from '../../../theme';
-import { TournamentState } from '../../../types/Tournaments';
+import { TournamentState, TournamentProps } from '../../../types/Tournaments';
+import { deleteTournamentAction } from '../../../store/actions/tournaments';
+import { deleteTournament } from '../../../requests';
 import TournamentCard from './TournamentCard';
 
 interface StateProps {
@@ -11,11 +13,23 @@ interface StateProps {
 
 const TournamentList = () => {
   const { tournaments } = useSelector((s: StateProps) => s.tournamentsStore);
+  const dispatch = useDispatch();
+
+  const handleDeleteTournament = async (
+    selectedTournament: TournamentProps
+  ) => {
+    dispatch(deleteTournamentAction(selectedTournament));
+    await deleteTournament(selectedTournament.id);
+  };
 
   const renderTournaments = (
     <CardList>
       {tournaments.map(tournament => (
-        <TournamentCard tournamentInfo={tournament} key={tournament.id} />
+        <TournamentCard
+          tournamentInfo={tournament}
+          key={tournament.id}
+          onDelete={() => handleDeleteTournament(tournament)}
+        />
       ))}
     </CardList>
   );

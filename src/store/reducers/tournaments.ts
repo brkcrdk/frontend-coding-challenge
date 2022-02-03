@@ -28,10 +28,15 @@ export default function tournaments(
     case actionTypes.FETCHING_ERROR:
       return { ...state, hasError: action.payload.hasError };
     case actionTypes.ADD_NEW_TOURNAMENT:
-      const updatedTournaments = [action.payload.tournament].concat(
+      const updatedState = [action.payload.tournament].concat(
         state.tournaments
       );
-      return { ...state, tournaments: updatedTournaments };
+      return { ...state, tournaments: updatedState };
+    case actionTypes.DELETE_TOURNAMENT:
+      const filteredState = state.tournaments.filter(
+        tournament => tournament.id !== action.payload.tournament?.id
+      );
+      return { ...state, tournaments: filteredState };
     default:
       return state;
   }

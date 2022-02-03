@@ -50,3 +50,14 @@ export function addNewTournament(tournament: TournamentProps) {
     });
   };
 }
+
+export function deleteTournamentAction(tournament: TournamentProps) {
+  return function(dispatch: Dispatch) {
+    dispatch({
+      type: actionTypes.DELETE_TOURNAMENT,
+      payload: {
+        tournament
+      }
+    });
+  };
+}

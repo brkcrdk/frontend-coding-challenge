@@ -7,9 +7,13 @@ import { dateFormatter } from '../../../utils';
 
 interface TournamentCardProps {
   tournamentInfo: TournamentProps;
+  onDelete: () => void;
 }
 
-const TournamentCard: React.FC<TournamentCardProps> = ({ tournamentInfo }) => {
+const TournamentCard: React.FC<TournamentCardProps> = ({
+  tournamentInfo,
+  onDelete
+}) => {
   const { name, organizer, game, participants, startDate } = tournamentInfo;
 
   return (
@@ -23,7 +27,7 @@ const TournamentCard: React.FC<TournamentCardProps> = ({ tournamentInfo }) => {
       <span>Start: {dateFormatter(startDate)}</span>
       <TournamentControllers>
         <Button>Edit</Button>
-        <Button>Delete</Button>
+        <Button onClick={onDelete}>Delete</Button>
       </TournamentControllers>
     </TournamentCardContainer>
   );

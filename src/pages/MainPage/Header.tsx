@@ -5,7 +5,7 @@ import { useDebounce } from 'usehooks-ts';
 import { Button, Input } from '../../components';
 import { updateFilter } from '../../store/actions/filter';
 import { addNewTournament } from '../../store/actions/tournaments';
-import { createTournament } from '../../requests/createTournament';
+import { createTournament } from '../../requests';
 
 const Header = () => {
   const dispatch = useDispatch();
