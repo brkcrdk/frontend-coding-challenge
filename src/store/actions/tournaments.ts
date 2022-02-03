@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux';
-import { API_TOURNAMENTS_URL } from '../../constants/api';
 import { actionTypes } from '../../types/ActionTypes';
 import { TournamentProps } from '../../types/Tournaments';
+import { fetcher } from '../../utils';
 
 const setTournaments = (tournaments: TournamentProps[]) => ({
   type: actionTypes.SET_TOURNAMENTS,
@@ -29,8 +29,7 @@ export function getTournaments(q: string = '') {
   return async function(dispatch: Dispatch) {
     try {
       dispatch(loadingState(true));
-      const request = await fetch(`${API_TOURNAMENTS_URL}${computedQuery}`);
-      const response = await request.json();
+      const response: TournamentProps[] = await fetcher(computedQuery);
       dispatch(setTournaments(response));
     } catch {
       dispatch(fethError(true));
@@ -42,14 +41,10 @@ export function getTournaments(q: string = '') {
 
 export function addNewTournament(tournamentName: string) {
   return async function(dispatch: Dispatch) {
-    const request = await fetch(API_TOURNAMENTS_URL, {
+    const tournament = await fetcher('', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
       body: JSON.stringify({ name: tournamentName })
     });
-    const tournament = await request.json();
     dispatch({
       type: actionTypes.ADD_NEW_TOURNAMENT,
       payload: {
@@ -59,18 +54,31 @@ export function addNewTournament(tournamentName: string) {
   };
 }
 
-export function deleteTournament(tournamentId: string) {
+export function deleteTournament(tournament: TournamentProps) {
   return async function(dispatch: Dispatch) {
-    await fetch(`${API_TOURNAMENTS_URL}/${tournamentId}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      }
+    await fetcher(`/${tournament.id}`, {
+      method: 'DELETE'
     });
     dispatch({
       type: actionTypes.DELETE_TOURNAMENT,
       payload: {
-        tournamentId
+        tournament
+      }
+    });
+  };
+}
+
+export function updateTournament(tournament: TournamentProps, newName: string) {
+  return async function(dispatch: Dispatch) {
+    await fetcher(`/${tournament.id}`, {
+      method: 'PATCH',
+      body: JSON.stringify({ name: newName })
+    });
+    dispatch({
+      type: actionTypes.UPDATE_TOURNAMENT,
+      payload: {
+        tournament,
+        newName
       }
     });
   };

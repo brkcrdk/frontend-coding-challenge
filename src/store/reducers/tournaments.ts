@@ -8,7 +8,7 @@ interface ActionProps {
     isLoading?: boolean;
     hasError?: boolean;
     tournament?: TournamentProps;
-    tournamentId?: string;
+    newName?: string;
   };
 }
 const initialState = {
@@ -35,9 +35,17 @@ export default function tournaments(
       return { ...state, tournaments: updatedState };
     case actionTypes.DELETE_TOURNAMENT:
       const filteredState = state.tournaments.filter(
-        tournament => tournament.id !== action.payload.tournamentId
+        tournament => tournament.id !== action.payload.tournament?.id
       );
       return { ...state, tournaments: filteredState };
+    case actionTypes.UPDATE_TOURNAMENT:
+      const updateState = state.tournaments.map(tournament => {
+        if (tournament.id === action.payload.tournament?.id) {
+          return { ...tournament, name: action.payload.newName };
+        }
+        return tournament;
+      });
+      return { ...state, tournaments: updateState };
     default:
       return state;
   }

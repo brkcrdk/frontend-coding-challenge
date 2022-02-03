@@ -3,7 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import theme from '../../../theme';
 import { TournamentState, TournamentProps } from '../../../types/Tournaments';
-import { deleteTournament } from '../../../store/actions/tournaments';
+import {
+  deleteTournament,
+  updateTournament
+} from '../../../store/actions/tournaments';
 import TournamentCard from './TournamentCard';
 
 interface StateProps {
@@ -14,10 +17,15 @@ const TournamentList = () => {
   const { tournaments } = useSelector((s: StateProps) => s.tournamentsStore);
   const dispatch = useDispatch();
 
-  const handleDeleteTournament = async (
-    selectedTournament: TournamentProps
-  ) => {
-    dispatch(deleteTournament(selectedTournament.id));
+  const handleDeleteTournament = (selectedTournament: TournamentProps) => {
+    dispatch(deleteTournament(selectedTournament));
+  };
+
+  const handleUpdateTournament = (selectedTournament: TournamentProps) => {
+    const newName = prompt('New Tournament Name:');
+    if (newName) {
+      dispatch(updateTournament(selectedTournament, newName));
+    }
   };
 
   const renderTournaments = (
@@ -27,6 +35,7 @@ const TournamentList = () => {
           tournamentInfo={tournament}
           key={tournament.id}
           onDelete={() => handleDeleteTournament(tournament)}
+          onEdit={() => handleUpdateTournament(tournament)}
         />
       ))}
     </CardList>
