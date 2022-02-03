@@ -1,6 +1,6 @@
 import { API_TOURNAMENTS_URL } from '../constants/api';
 
-export const createTournament = async (name: string) => {
+const createTournament = async (name: string) => {
   try {
     const request = await fetch(API_TOURNAMENTS_URL, {
       method: 'POST',
@@ -14,3 +14,5 @@ export const createTournament = async (name: string) => {
     console.log(err);
   }
 };
+
+export default createTournament;
