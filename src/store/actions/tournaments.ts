@@ -40,8 +40,16 @@ export function getTournaments(q: string = '') {
   };
 }
 
-export function addNewTournament(tournament: TournamentProps) {
-  return function(dispatch: Dispatch) {
+export function addNewTournament(tournamentName: string) {
+  return async function(dispatch: Dispatch) {
+    const request = await fetch(API_TOURNAMENTS_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ name: tournamentName })
+    });
+    const tournament = await request.json();
     dispatch({
       type: actionTypes.ADD_NEW_TOURNAMENT,
       payload: {
@@ -51,12 +59,18 @@ export function addNewTournament(tournament: TournamentProps) {
   };
 }
 
-export function deleteTournamentAction(tournament: TournamentProps) {
-  return function(dispatch: Dispatch) {
+export function deleteTournament(tournamentId: string) {
+  return async function(dispatch: Dispatch) {
+    await fetch(`${API_TOURNAMENTS_URL}/${tournamentId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
     dispatch({
       type: actionTypes.DELETE_TOURNAMENT,
       payload: {
-        tournament
+        tournamentId
       }
     });
   };

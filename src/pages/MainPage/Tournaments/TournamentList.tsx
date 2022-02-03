@@ -3,8 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import theme from '../../../theme';
 import { TournamentState, TournamentProps } from '../../../types/Tournaments';
-import { deleteTournamentAction } from '../../../store/actions/tournaments';
-import { deleteTournament } from '../../../requests';
+import { deleteTournament } from '../../../store/actions/tournaments';
 import TournamentCard from './TournamentCard';
 
 interface StateProps {
@@ -18,8 +17,7 @@ const TournamentList = () => {
   const handleDeleteTournament = async (
     selectedTournament: TournamentProps
   ) => {
-    dispatch(deleteTournamentAction(selectedTournament));
-    await deleteTournament(selectedTournament.id);
+    dispatch(deleteTournament(selectedTournament.id));
   };
 
   const renderTournaments = (

@@ -5,7 +5,6 @@ import { useDebounce } from 'usehooks-ts';
 import { Button, Input } from '../../components';
 import { updateFilter } from '../../store/actions/filter';
 import { addNewTournament } from '../../store/actions/tournaments';
-import { createTournament } from '../../requests';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -19,8 +18,7 @@ const Header = () => {
   const handleAddTournament = async () => {
     const tournamentName = prompt('New Tournament Name:');
     if (tournamentName) {
-      const newTournament = await createTournament(tournamentName);
-      dispatch(addNewTournament(newTournament));
+      dispatch(addNewTournament(tournamentName));
     }
   };
 
