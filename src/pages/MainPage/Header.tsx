@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { useDebounce } from 'usehooks-ts';
-import { Button, Input } from '../../components';
-import { updateFilter } from '../../store/actions/filter';
-import { addNewTournament } from '../../store/actions/tournaments';
+import { Button, Input } from 'components';
+import { updateFilter } from 'store/actions/filter';
+import { addNewTournament } from 'store/actions/tournaments';
 
 const Header = () => {
   const dispatch = useDispatch();

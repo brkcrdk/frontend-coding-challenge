@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Button } from '../../../components';
-import theme from '../../../theme';
+import { Button } from 'components';
+import theme from 'theme';
 
 function Retry() {
   return (

@@ -1,12 +1,9 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import theme from '../../../theme';
-import { TournamentState, TournamentProps } from '../../../types/Tournaments';
-import {
-  deleteTournament,
-  updateTournament
-} from '../../../store/actions/tournaments';
+import theme from 'theme';
+import { TournamentState, TournamentProps } from 'types/Tournaments';
+import { deleteTournament, updateTournament } from 'store/actions/tournaments';
 import TournamentCard from './TournamentCard';
 
 interface StateProps {

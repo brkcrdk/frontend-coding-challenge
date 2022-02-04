@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { TournamentState } from '../../../types/Tournaments';
-import theme from '../../../theme';
+import theme from 'theme';
+import { TournamentState } from 'types/Tournaments';
 import TournamentList from './TournamentList';
 import Retry from './Retry';
 interface StateProps {

@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import theme from '../../../theme';
-import { H6, Button } from '../../../components';
-import { TournamentProps } from '../../../types/Tournaments';
-import { dateFormatter } from '../../../utils';
+import theme from 'theme';
+import { H6, Button } from 'components';
+import { TournamentProps } from 'types/Tournaments';
+import { dateFormatter } from 'utils';
 
 interface TournamentCardProps {
   tournamentInfo: TournamentProps;

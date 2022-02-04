@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { H4, Container } from './components';
-import MainPage from './pages/MainPage';
-import { getTournaments } from './store/actions/tournaments';
-import { RootState } from './store/reducers';
+import { H4, Container } from 'components';
+import MainPage from 'pages/MainPage';
+import { getTournaments } from 'store/actions/tournaments';
+import { RootState } from 'store/reducers';
 
 const App: React.FC = () => {
   const { searchQuery } = useSelector((s: RootState) => s.filterStore);

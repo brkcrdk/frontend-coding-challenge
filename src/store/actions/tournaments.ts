@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux';
-import { actionTypes } from '../../types/ActionTypes';
-import { TournamentProps } from '../../types/Tournaments';
-import { fetcher } from '../../utils';
+import { actionTypes } from 'types/ActionTypes';
+import { TournamentProps } from 'types/Tournaments';
+import { fetcher } from 'utils';
 
 const setTournaments = (tournaments: TournamentProps[]) => ({
   type: actionTypes.SET_TOURNAMENTS,

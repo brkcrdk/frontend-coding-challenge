@@ -1,4 +1,4 @@
-import { API_TOURNAMENTS_URL } from '../constants/api';
+import { API_TOURNAMENTS_URL } from 'constants/api';
 
 const fetcher = async (customUrl: string, customOptions?: RequestInit) => {
   const request = await fetch(`${API_TOURNAMENTS_URL}${customUrl}`, {
