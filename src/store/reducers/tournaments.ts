@@ -1,5 +1,5 @@
-import { TournamentProps, TournamentState } from '../../types/Tournaments';
-import { actionTypes } from '../../types/ActionTypes';
+import { TournamentProps, TournamentState } from 'types/Tournaments';
+import { actionTypes } from 'types/ActionTypes';
 
 interface ActionProps {
   type: string;

@@ -1,4 +1,4 @@
-import { actionTypes } from '../../types/ActionTypes';
+import { actionTypes } from 'types/ActionTypes';
 
 interface FilterState {
   searchQuery: string;
