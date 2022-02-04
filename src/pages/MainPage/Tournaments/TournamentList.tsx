@@ -22,7 +22,7 @@ const TournamentList = () => {
   };
 
   const handleUpdateTournament = (selectedTournament: TournamentProps) => {
-    const newName = prompt('New Tournament Name:');
+    const newName = prompt('New Tournament Name:', selectedTournament.name);
     if (newName) {
       dispatch(updateTournament(selectedTournament, newName));
     }
