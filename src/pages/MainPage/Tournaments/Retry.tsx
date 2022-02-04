@@ -1,13 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'components';
 import theme from 'theme';
+import { RootState } from 'store/reducers';
+import { getTournaments } from 'store/actions/tournaments';
 
 function Retry() {
+  const { searchQuery } = useSelector((s: RootState) => s.filterStore);
+  const dispatch = useDispatch();
+
+  const handleRetry = () => {
+    dispatch(getTournaments(searchQuery));
+  };
   return (
     <RetryContainer>
       <span>Something went wrong.</span>
-      <Button>Retry</Button>
+      <Button onClick={handleRetry}>Retry</Button>
     </RetryContainer>
   );
 }

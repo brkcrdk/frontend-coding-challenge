@@ -31,6 +31,7 @@ export function getTournaments(q: string = '') {
       dispatch(loadingState(true));
       const response: TournamentProps[] = await fetcher(computedQuery);
       dispatch(setTournaments(response));
+      dispatch(fethError(false));
     } catch {
       dispatch(fethError(true));
     } finally {
