@@ -15,7 +15,9 @@ const TournamentList = () => {
   const dispatch = useDispatch();
 
   const handleDeleteTournament = (selectedTournament: TournamentProps) => {
-    dispatch(deleteTournament(selectedTournament));
+    if (window.confirm('Do you really want to delete this tournament?')) {
+      dispatch(deleteTournament(selectedTournament));
+    }
   };
 
   const handleUpdateTournament = (selectedTournament: TournamentProps) => {
